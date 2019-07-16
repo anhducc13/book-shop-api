@@ -11,9 +11,9 @@ class Book(db.Model):
 
     __tablename__ = 'book'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.Unicode(), nullable=False, unique=True)
-    author = db.Column(db.Unicode(), nullable=True)
-    description = db.Column(db.Unicode(), nullable=True)
+    name = db.Column(db.Text(), nullable=False)
+    author = db.Column(db.Text(), nullable=True)
+    description = db.Column(db.Text(), nullable=True)
     created_at = db.Column(db.TIMESTAMP, default=datetime.now)
     updated_at = db.Column(db.TIMESTAMP, default=datetime.now)
     user_id_updated = db.Column(db.Integer, db.ForeignKey('user.id'))

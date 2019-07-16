@@ -5,7 +5,7 @@ from flask_cors import CORS
 def create_app():
     import config
     import os
-    from . import models
+    from . import models, api
 
     def load_app_config(app):
         app.config.from_object(config)
@@ -19,7 +19,7 @@ def create_app():
     CORS(app)
     app.secret_key = config.FLASK_APP_SECRET_KEY
     load_app_config(app)
-    # api.init_app(app)
+    api.init_app(app)
     models.init_app(app)
     return app
 

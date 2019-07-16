@@ -13,6 +13,6 @@ def init_app(app, **kwargs):
     db.init_app(app)
 
 
-from .user import User
+from .user import User, Role
 from .book import Book
 from .category import Category, category_book_table

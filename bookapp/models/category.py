@@ -11,8 +11,8 @@ class Category(db.Model):
 
     __tablename__ = 'category'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.Text(), nullable=False, unique=True)
-    description = db.Column(db.Unicode(), nullable=True)
+    name = db.Column(db.Text(), nullable=False)
+    description = db.Column(db.Text(), nullable=True)
     created_at = db.Column(db.TIMESTAMP, default=datetime.now)
     updated_at = db.Column(db.TIMESTAMP, default=datetime.now)
     user_id_updated = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -26,6 +26,6 @@ class Category(db.Model):
 category_book_table = db.Table(
     'category_book',
     db.Model.metadata,
-    db.Column('category_id', db.Integer, db.ForeignKey('category.id')),
-    db.Column('book_id', db.Integer, db.ForeignKey('book.id'))
+    db.Column('category_id', db.Integer, db.ForeignKey('category.id', ondelete='CASCADE')),
+    db.Column('book_id', db.Integer, db.ForeignKey('book.id', ondelete='CASCADE'))
 )
